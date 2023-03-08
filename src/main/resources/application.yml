@@ -2,26 +2,13 @@ server:
   port: 9100 # 伺服器的port號
 
 spring:
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:todolist;MODE=MYSQL; # h2 databases 連接位址
-    driver-class-name: org.h2.Driver # 配置driver
-    username: eric # database 用戶名
-    password: 1234 # database 密碼
-  thymeleaf:
-    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
-    mode: HTML5
-    #编码 可不用配置
-    encoding: UTF-8
-    #内容类别,可不用配置
-    content-type: text/html
-    #开发配置为false,避免修改模板还要重启服务器
-    cache: false
-    #配置模板路径，默认是templates，可以不用配置
-    prefix: classpath:/templates
-    suffix: .html
+    url: jdbc:mysql://localhost:3306/ems?useSSL=false # mysql databases 連接位址
+    username: root # database 用戶名
+    password: 123456 # database 密碼
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
